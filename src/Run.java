@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.LinkedList;
 import org.graphstream.graph.*;
 import org.graphstream.graph.implementations.*;
@@ -14,13 +15,19 @@ public class Run {
     public static void main(String[] args) {
         GraphGen graphGen = new GraphGen();
 
-        LinkedList<Node>[] graph = graphGen.getAdjacencyList();
+        Graph graph = graphGen.getGraph();
 
-        for(int i = 0; i < graph.length; i++) {
-            for(int j = 0; j < graph[i].size(); j++) {
-                System.out.println(graph[i].get(j));
-            }
-            System.out.println("===============");
+
+//        for(int i = 0; i < graph.length; i++) {
+//            for(int j = 0; j < graph[i].size(); j++) {
+//                System.out.println(graph[i].get(j));
+//            }
+//            System.out.println("===============");
+//        }
+        Fleury fleury = new Fleury(graph);
+        ArrayList<Node> circuit = fleury.getEulerianCircuit();
+        for(int i = 0; i < circuit.size(); i++) {
+            System.out.println(circuit.get(i).toString());
         }
 
     }

@@ -2,17 +2,18 @@ import org.graphstream.graph.*;
 import org.graphstream.graph.implementations.*;
 import org.graphstream.algorithm.generator.*;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class BruteForce {
 
-    LinkedList<Node> eulerianCircuit = new LinkedList<>();
+    ArrayList<Node> eulerianCircuit = new ArrayList<>();
 
-    public BruteForce(LinkedList<Node> graph) {
+    public BruteForce(Graph graph) {
 
     }
 
-    public LinkedList<Node> getEulerianCircuit() {
+    public ArrayList<Node> getEulerianCircuit() {
         return eulerianCircuit;
     }
 }

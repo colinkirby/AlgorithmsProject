@@ -3,16 +3,18 @@ import org.graphstream.graph.implementations.*;
 import org.graphstream.algorithm.generator.*;
 
 import javax.swing.text.html.HTMLDocument;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public class Fleury {
 
-    LinkedList<Node> eulerianCircuit = new LinkedList<>();
+    ArrayList<Node> eulerianCircuit = new ArrayList<>();
 
-    public Fleury(LinkedList<Node> graph) {
-        Node startNode = graph.getFirst();
+    public Fleury(Graph graph) {
+        Node startNode = graph.getNode(0);
         Graph g = startNode.getGraph();
+
         Iterator nodes = startNode.getNeighborNodeIterator();
         while (nodes.hasNext()){
             if (isValidEdge(startNode, (Node) nodes.next())){
@@ -23,8 +25,6 @@ public class Fleury {
                // Fleury(GraphGen.getAdjacencyList());???
             }
         }
-
-
     }
 
     public boolean isValidEdge(Node a, Node b){
@@ -45,13 +45,13 @@ public class Fleury {
         Iterator nieghbors = n.getNeighborNodeIterator();
         int count = 1;
         while (nieghbors.hasNext()){
-            count = count + countReachables((Node) nieghbors.next())
+            count = count + countReachables((Node) nieghbors.next());
         }
         return count;
     }
 
 
-    public LinkedList<Node> getEulerianCircuit() {
+    public ArrayList<Node> getEulerianCircuit() {
         return eulerianCircuit;
     }
 }
